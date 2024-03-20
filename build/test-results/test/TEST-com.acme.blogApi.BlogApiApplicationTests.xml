@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.acme.blogApi.BlogApiApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-19T02:22:52" hostname="workstation" time="0.615">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.acme.blogApi.BlogApiApplicationTests" time="0.615"/>
+  <system-out><![CDATA[23:22:51.779 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.acme.blogApi.BlogApiApplicationTests]: BlogApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:22:51.845 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.acme.blogApi.BlogApiApplication for test class com.acme.blogApi.BlogApiApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.3)
+
+2024-03-18T23:22:52.127-03:00  INFO 7548 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : Starting BlogApiApplicationTests using Java 17.0.10 with PID 7548 (started by lzndev in /home/lzndev/Documents/workspace/code/git/projeto-ads-5a-software-product/api)
+2024-03-18T23:22:52.128-03:00  INFO 7548 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2024-03-18T23:22:52.897-03:00  INFO 7548 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : Started BlogApiApplicationTests in 0.949 seconds (process running for 1.737)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
