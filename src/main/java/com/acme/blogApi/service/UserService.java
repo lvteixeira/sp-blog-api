@@ -5,6 +5,9 @@ import com.acme.blogApi.model.UserEntity;
 import com.acme.blogApi.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,12 @@ public class UserService {
 
         typeMap.addMappings(mapper -> mapper.skip(UserEntity::setId));
         typeMap.addMappings(mapper -> mapper.skip(UserEntity::setUserId));
+
+        TypeMap<UserEntity, UserDTO> typeMap1 = modelMapper.createTypeMap(UserEntity.class, UserDTO.class);
+
+        typeMap1.addMappings(mapper -> mapper.skip(UserDTO::setEmail));
+        typeMap1.addMappings(mapper -> mapper.skip(UserDTO::setId));
+        typeMap1.addMappings(mapper -> mapper.skip(UserDTO::setPassword));
     }
 
     public UserDTO convertEntityToDTO(UserEntity entity) {
@@ -35,6 +44,9 @@ public class UserService {
     }
 
     public void create(UserEntity user) throws Exception {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
         userRepository.save(user);
         userRepository.flush();
     }

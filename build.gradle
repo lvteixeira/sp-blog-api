@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.security:spring-security-crypto:6.2.1'
 	implementation 'org.modelmapper:modelmapper:2.4.4'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'com.h2database:h2'
