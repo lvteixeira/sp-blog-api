@@ -1,6 +1,8 @@
 package com.acme.blogApi.service;
 
 import com.acme.blogApi.dto.UserDTO;
+import com.acme.blogApi.exception.AuthenticationException;
+import com.acme.blogApi.exception.UserCreationException;
 import com.acme.blogApi.model.UserEntity;
 import com.acme.blogApi.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -47,7 +49,27 @@ public class UserService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String hashedPassword = encoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
-        userRepository.save(user);
-        userRepository.flush();
+        try {
+            userRepository.save(user);
+            userRepository.flush();
+        } catch (Exception e) {
+            throw new UserCreationException("Falha ao criar usuário");
+        }
+    }
+
+    public UserDTO authenticate(String username, String password) throws Exception {
+        UserEntity user = userRepository.findByUsername(username);
+        if(user != null)
+            if(verifyPassword(password, user.getPassword())) {
+                return convertEntityToDTO(user);
+            }else {
+                throw new AuthenticationException("Senha inválida");
+            }
+        throw new AuthenticationException("Usuário inválido");
+    }
+
+    private boolean verifyPassword(String inputPassword, String storedPassword) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder.matches(inputPassword, storedPassword);
     }
 }
