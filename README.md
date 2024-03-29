@@ -15,7 +15,7 @@ O projeto depende da versão 17.0.10 do JDK. Com o JDK instalado:
 
 1 - Acessar o diretório raiz:
 ```bash
-cd sp-blog-api
+cd sp-blog-api\
 ```
 2 - Buildar o projeto:
 ```bash
