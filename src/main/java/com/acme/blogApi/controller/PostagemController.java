@@ -9,13 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("postagem")
 public class PostagemController {
-    @Autowired
     private PostagemService postagemService;
 
+    @Autowired
     public PostagemController(PostagemService postagemService) {
         this.postagemService = postagemService;
     }
@@ -27,6 +28,22 @@ public class PostagemController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(dtos);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<PostagemDTO> getPostagemById(@PathVariable("id") Long id) {
+        Optional<PostagemEntity> postagem = postagemService.findById(id);
+
+        if(postagem.isPresent()) {
+            PostagemDTO dto = postagemService.convertEntityToDTO(postagem.get());
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(dto);
+        } else {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .build();
+        }
     }
 
     @PostMapping
