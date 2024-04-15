@@ -55,5 +55,23 @@ public class PostagemController {
                 .status(HttpStatus.CREATED)
                 .body(createdPostagem);
     }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Void> updatePostagem(@PathVariable("id") Long id, @RequestBody PostagemDTO updatePayload) throws Exception {
+        Optional<PostagemEntity> existingPostagem = postagemService.findById(id);
+
+        if(existingPostagem.isPresent()) {
+            PostagemEntity obj = postagemService.convertDTOToEntity(updatePayload);
+            postagemService.update(obj, id);
+            return ResponseEntity
+                    .status(HttpStatus.NO_CONTENT)
+                    .build();
+        } else {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .build();
+        }
+    }
+
 }
 

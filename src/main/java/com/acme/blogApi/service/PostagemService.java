@@ -61,4 +61,15 @@ public class PostagemService {
             throw new RuntimeException("Falha ao criar usuário");
         }
     }
+
+    public void update(PostagemEntity updated, Long id) {
+        List<PostagemEntity> postagens = this.getAll();
+        postagens.stream()
+                .filter(postagem -> postagem.getId() == id)
+                .findFirst()
+                .ifPresent(postagem -> {
+                    postagem.setContent(updated.getContent());
+                    postagemRepository.flush();
+                });
+    }
 }
