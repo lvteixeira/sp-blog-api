@@ -13,6 +13,9 @@ public class PostagemEntity {
     @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private boolean isEdited = false;
+
     public Long getId() {
         return id;
     }
@@ -25,5 +28,13 @@ public class PostagemEntity {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public boolean isEdited() {
+        return isEdited;
+    }
+
+    public void setEdited(boolean edited) {
+        this.isEdited = edited;
     }
 }
