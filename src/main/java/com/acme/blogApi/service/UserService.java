@@ -5,13 +5,14 @@ import com.acme.blogApi.exception.AuthenticationException;
 import com.acme.blogApi.exception.UserCreationException;
 import com.acme.blogApi.model.UserEntity;
 import com.acme.blogApi.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -19,10 +20,13 @@ public class UserService {
 
     private ModelMapper modelMapper;
 
+    private BCryptPasswordEncoder encoder;
+
     @Autowired
-    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper, BCryptPasswordEncoder encoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.encoder = encoder;
 
         TypeMap<UserDTO, UserEntity> typeMap = modelMapper.createTypeMap(UserDTO.class, UserEntity.class);
 
@@ -44,31 +48,22 @@ public class UserService {
         return modelMapper.map(dto, UserEntity.class);
     }
 
-    public void create(UserEntity user) throws Exception {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String hashedPassword = encoder.encode(user.getPassword());
-        user.setPassword(hashedPassword);
+    @Transactional
+    public UserDTO create(UserDTO dto) {
+        UserEntity userEntity = convertDTOToEntity(dto);
+        userEntity.setPassword(encoder.encode(userEntity.getPassword()));
         try {
-            userRepository.save(user);
-            userRepository.flush();
-        } catch (Exception e) {
+            UserEntity savedUser = userRepository.save(userEntity);
+            return convertEntityToDTO(savedUser);
+        } catch(Exception e) {
             throw new UserCreationException("Falha ao criar usuário");
         }
     }
 
-    public UserDTO authenticate(String username, String password) throws Exception {
-        UserEntity user = userRepository.findByUsername(username);
-        if(user != null)
-            if(verifyPassword(password, user.getPassword())) {
-                return convertEntityToDTO(user);
-            }else {
-                throw new AuthenticationException("Senha inválida");
-            }
-        throw new AuthenticationException("Usuário inválido");
-    }
-
-    private boolean verifyPassword(String inputPassword, String storedPassword) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        return encoder.matches(inputPassword, storedPassword);
+    public Optional<UserDTO> authenticate(String username, String password) {
+        return Optional.ofNullable(userRepository.findByUsername(username)
+                .filter(user -> encoder.matches(password, user.getPassword()))
+                .map(this::convertEntityToDTO)
+                .orElseThrow(() -> new AuthenticationException("Usuário ou senha inválidos")));
     }
 }
