@@ -11,32 +11,23 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("user")
 public class UserController {
-    @Autowired
     private UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("{username}/auth")
-    public ResponseEntity<UserDTO> authenticate(@PathVariable String username, @RequestParam String password) {
-        try {
-            var user = userService.authenticate(username, password);
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(user);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public ResponseEntity<UserDTO> authenticate(@PathVariable("username") String username, @RequestParam String password) {
+        return userService.authenticate(username, password)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO createPayload) throws Exception {
-        UserEntity obj = userService.convertDTOToEntity(createPayload);
-        userService.create(obj);
-        UserDTO createdUser = userService.convertEntityToDTO(obj);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(createdUser);
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO createPayload) {
+        UserDTO createdUser = userService.create(createPayload);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 }
