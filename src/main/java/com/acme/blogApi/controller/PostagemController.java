@@ -9,34 +9,40 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("postagem")
 public class PostagemController {
-    @Autowired
     private PostagemService postagemService;
 
+    @Autowired
     public PostagemController(PostagemService postagemService) {
         this.postagemService = postagemService;
     }
 
     @GetMapping
     public ResponseEntity<List<PostagemDTO>> getAllPostagens() {
-        List<PostagemEntity> postagens = postagemService.getAll();
-        List<PostagemDTO> dtos = postagemService.convertEntityListToDTOList(postagens);
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(dtos);
+        List<PostagemDTO> postagens = postagemService.getAll();
+        return ResponseEntity.ok(postagens);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<PostagemDTO> getPostagemById(@PathVariable("id") Long id) {
+        return postagemService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<PostagemDTO> createPostagem(@RequestBody PostagemDTO createPayload) throws Exception {
-        PostagemEntity obj = postagemService.convertDTOToEntity(createPayload);
-        postagemService.create(obj);
-        PostagemDTO createdPostagem = postagemService.convertEntityToDTO(obj);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(createdPostagem);
+    public ResponseEntity<PostagemDTO> createPostagem(@RequestBody PostagemDTO createPayload) {
+        PostagemDTO createdPostagem = postagemService.create(createPayload);
+        return new ResponseEntity<>(createdPostagem, HttpStatus.CREATED);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Void> updatePostagem(@PathVariable("id") Long id, @RequestBody PostagemDTO updatePayload) {
+        boolean updated = postagemService.update(id, updatePayload);
+        return updated ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 }
-
