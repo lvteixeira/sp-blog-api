@@ -2,7 +2,6 @@ package com.acme.blogApi.dto;
 
 public class UserDTO {
     private Long id;
-    private String userId;
     private String username;
     private String email;
     private String password;
@@ -10,12 +9,10 @@ public class UserDTO {
     public UserDTO() {}
 
     public UserDTO(
-            Long id, String userId,
-            String username, String email,
-            String password
+            Long id, String username,
+            String email, String password
     ) {
         this.id = id;
-        this.userId = userId;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -27,14 +24,6 @@ public class UserDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUsername() {

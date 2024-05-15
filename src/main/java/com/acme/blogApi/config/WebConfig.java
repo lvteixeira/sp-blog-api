@@ -27,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addMapping("/postagem/{id}")
                 .allowedOrigins("http://localhost:3000")
-                .allowedMethods("GET", "PUT")
+                .allowedMethods("GET", "PUT", "DELETE")
                 .allowedHeaders("*");
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.acme.blogApi.BlogApiApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-20T07:21:48" hostname="workstation" time="0.416">
+<testsuite name="com.acme.blogApi.BlogApiApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-14T23:46:23" hostname="workstation" time="0.384">
   <properties/>
-  <testcase name="contextLoads()" classname="com.acme.blogApi.BlogApiApplicationTests" time="0.416"/>
-  <system-out><![CDATA[04:21:45.398 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.acme.blogApi.BlogApiApplicationTests]: BlogApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-04:21:45.470 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.acme.blogApi.BlogApiApplication for test class com.acme.blogApi.BlogApiApplicationTests
+  <testcase name="contextLoads()" classname="com.acme.blogApi.BlogApiApplicationTests" time="0.384"/>
+  <system-out><![CDATA[20:46:20.605 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.acme.blogApi.BlogApiApplicationTests]: BlogApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:46:20.679 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.acme.blogApi.BlogApiApplication for test class com.acme.blogApi.BlogApiApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,47 +13,47 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.3)
 
-2024-04-20T04:21:45.789-03:00  INFO 18225 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : Starting BlogApiApplicationTests using Java 17.0.10 with PID 18225 (started by lzndev in /home/lzndev/Documents/workspace/code/git/sp-blog-api)
-2024-04-20T04:21:45.790-03:00  INFO 18225 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : No active profile set, falling back to 1 default profile: "default"
-2024-04-20T04:21:45.821-03:00 TRACE 18225 --- [blogApi] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7e0b9178, started on Sat Apr 20 04:21:45 BRT 2024
-2024-04-20T04:21:46.263-03:00  INFO 18225 --- [blogApi] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-04-20T04:21:46.303-03:00  INFO 18225 --- [blogApi] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 2 JPA repository interfaces.
-2024-04-20T04:21:46.540-03:00 TRACE 18225 --- [blogApi] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : No 'messageSource' bean, using [Empty MessageSource]
-2024-04-20T04:21:46.541-03:00 TRACE 18225 --- [blogApi] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : No 'applicationEventMulticaster' bean, using [SimpleApplicationEventMulticaster]
-2024-04-20T04:21:46.625-03:00  INFO 18225 --- [blogApi] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-04-20T04:21:46.758-03:00  INFO 18225 --- [blogApi] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db user=SA
-2024-04-20T04:21:46.759-03:00  INFO 18225 --- [blogApi] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-04-20T04:21:46.794-03:00  INFO 18225 --- [blogApi] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-04-20T04:21:46.835-03:00  INFO 18225 --- [blogApi] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-04-20T04:21:46.864-03:00  INFO 18225 --- [blogApi] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-04-20T04:21:47.039-03:00  INFO 18225 --- [blogApi] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-04-20T04:21:47.076-03:00  WARN 18225 --- [blogApi] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-04-20T04:21:47.703-03:00  INFO 18225 --- [blogApi] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-04-20T04:21:47.731-03:00  INFO 18225 --- [blogApi] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-04-20T04:21:48.233-03:00  WARN 18225 --- [blogApi] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-04-20T04:21:48.282-03:00 TRACE 18225 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+2024-05-14T20:46:20.976-03:00  INFO 4468 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : Starting BlogApiApplicationTests using Java 17.0.10 with PID 4468 (started by lzndev in /home/lzndev/Documents/workspace/code/git/sp-blog-api)
+2024-05-14T20:46:20.978-03:00  INFO 4468 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2024-05-14T20:46:21.009-03:00 TRACE 4468 --- [blogApi] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7e0b9178, started on Tue May 14 20:46:21 BRT 2024
+2024-05-14T20:46:21.443-03:00  INFO 4468 --- [blogApi] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-14T20:46:21.484-03:00  INFO 4468 --- [blogApi] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2024-05-14T20:46:21.726-03:00 TRACE 4468 --- [blogApi] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : No 'messageSource' bean, using [Empty MessageSource]
+2024-05-14T20:46:21.727-03:00 TRACE 4468 --- [blogApi] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : No 'applicationEventMulticaster' bean, using [SimpleApplicationEventMulticaster]
+2024-05-14T20:46:21.808-03:00  INFO 4468 --- [blogApi] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-14T20:46:21.939-03:00  INFO 4468 --- [blogApi] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db user=SA
+2024-05-14T20:46:21.941-03:00  INFO 4468 --- [blogApi] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-14T20:46:21.979-03:00  INFO 4468 --- [blogApi] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-14T20:46:22.017-03:00  INFO 4468 --- [blogApi] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-14T20:46:22.052-03:00  INFO 4468 --- [blogApi] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-14T20:46:22.216-03:00  INFO 4468 --- [blogApi] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-14T20:46:22.247-03:00  WARN 4468 --- [blogApi] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-14T20:46:22.912-03:00  INFO 4468 --- [blogApi] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-14T20:46:22.944-03:00  INFO 4468 --- [blogApi] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14T20:46:23.442-03:00  WARN 4468 --- [blogApi] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-14T20:46:23.491-03:00 TRACE 4468 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
 	c.a.b.c.PostagemController:
 	{GET [/postagem]}: getAllPostagens()
 	{GET [/postagem/{id}]}: getPostagemById(Long)
 	{POST [/postagem]}: createPostagem(PostagemDTO)
 	{PUT [/postagem/{id}]}: updatePostagem(Long,PostagemDTO)
-2024-04-20T04:21:48.285-03:00 TRACE 18225 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+2024-05-14T20:46:23.494-03:00 TRACE 4468 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
 	c.a.b.c.UserController:
 	{GET [/user/{username}/auth]}: authenticate(String,String)
 	{POST [/user]}: createUser(UserDTO)
-2024-04-20T04:21:48.290-03:00 TRACE 18225 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+2024-05-14T20:46:23.499-03:00 TRACE 4468 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
 	o.s.b.a.w.s.e.BasicErrorController:
 	{ [/error]}: error(HttpServletRequest)
 	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-04-20T04:21:48.293-03:00 DEBUG 18225 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 8 mappings in 'requestMappingHandlerMapping'
-2024-04-20T04:21:48.301-03:00 DEBUG 18225 --- [blogApi] [    Test worker] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
-2024-04-20T04:21:48.370-03:00 TRACE 18225 --- [blogApi] [    Test worker] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
-2024-04-20T04:21:48.392-03:00 DEBUG 18225 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2024-04-20T04:21:48.415-03:00 DEBUG 18225 --- [blogApi] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
-2024-04-20T04:21:48.533-03:00  INFO 18225 --- [blogApi] [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db'
-2024-04-20T04:21:48.567-03:00 TRACE 18225 --- [blogApi] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Using LifecycleProcessor [org.springframework.context.support.DefaultLifecycleProcessor@602e7a9e]
-2024-04-20T04:21:48.583-03:00 TRACE 18225 --- [blogApi] [    Test worker] o.s.w.s.resource.ResourceUrlProvider     : No resource handling mappings found
-2024-04-20T04:21:48.588-03:00  INFO 18225 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : Started BlogApiApplicationTests in 3.002 seconds (process running for 3.781)
+2024-05-14T20:46:23.502-03:00 DEBUG 4468 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 8 mappings in 'requestMappingHandlerMapping'
+2024-05-14T20:46:23.509-03:00 DEBUG 4468 --- [blogApi] [    Test worker] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2024-05-14T20:46:23.571-03:00 TRACE 4468 --- [blogApi] [    Test worker] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2024-05-14T20:46:23.593-03:00 DEBUG 4468 --- [blogApi] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-14T20:46:23.616-03:00 DEBUG 4468 --- [blogApi] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-14T20:46:23.738-03:00  INFO 4468 --- [blogApi] [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db'
+2024-05-14T20:46:23.769-03:00 TRACE 4468 --- [blogApi] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Using LifecycleProcessor [org.springframework.context.support.DefaultLifecycleProcessor@41d6d6c4]
+2024-05-14T20:46:23.783-03:00 TRACE 4468 --- [blogApi] [    Test worker] o.s.w.s.resource.ResourceUrlProvider     : No resource handling mappings found
+2024-05-14T20:46:23.788-03:00  INFO 4468 --- [blogApi] [    Test worker] c.acme.blogApi.BlogApiApplicationTests   : Started BlogApiApplicationTests in 2.996 seconds (process running for 3.836)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

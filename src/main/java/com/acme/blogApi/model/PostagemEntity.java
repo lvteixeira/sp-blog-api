@@ -1,6 +1,8 @@
 package com.acme.blogApi.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="postagens")
@@ -15,6 +17,15 @@ public class PostagemEntity {
 
     @Column(nullable = false)
     private boolean isEdited = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    private UserEntity user;
+
+    @CreationTimestamp
+    @Column(name = "createdAt", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
 
     public Long getId() {
         return id;
@@ -36,5 +47,21 @@ public class PostagemEntity {
 
     public void setEdited(boolean edited) {
         this.isEdited = edited;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }
