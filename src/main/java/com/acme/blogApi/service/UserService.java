@@ -31,12 +31,10 @@ public class UserService {
         TypeMap<UserDTO, UserEntity> typeMap = modelMapper.createTypeMap(UserDTO.class, UserEntity.class);
 
         typeMap.addMappings(mapper -> mapper.skip(UserEntity::setId));
-        typeMap.addMappings(mapper -> mapper.skip(UserEntity::setUserId));
 
         TypeMap<UserEntity, UserDTO> typeMap1 = modelMapper.createTypeMap(UserEntity.class, UserDTO.class);
 
         typeMap1.addMappings(mapper -> mapper.skip(UserDTO::setEmail));
-        typeMap1.addMappings(mapper -> mapper.skip(UserDTO::setId));
         typeMap1.addMappings(mapper -> mapper.skip(UserDTO::setPassword));
     }
 

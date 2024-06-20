@@ -2,6 +2,8 @@ package com.acme.blogApi.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -12,9 +14,6 @@ public class UserEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String userId = UUID.randomUUID().toString();
-
-    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
@@ -23,20 +22,15 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PostagemEntity> postagens = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUsername() {
@@ -61,5 +55,13 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<PostagemEntity> getPostagens() {
+        return postagens;
+    }
+
+    public void setPostagens(List<PostagemEntity> postagens) {
+        this.postagens = postagens;
     }
 }
