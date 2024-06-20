@@ -43,6 +43,16 @@ public class PostagemController {
         return updated ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/{postId}/curtir/{userId}")
+    public ResponseEntity<?> curtirPostagem(@PathVariable Long postId, @PathVariable Long userId) {
+        try {
+            postagemService.curtirPostagem(postId, userId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao curtir a postagem");
+        }
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deletePostagem(@PathVariable("id") Long id) {
         boolean deleted = postagemService.delete(id);

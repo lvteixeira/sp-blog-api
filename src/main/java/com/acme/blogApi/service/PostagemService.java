@@ -38,6 +38,7 @@ public class PostagemService {
         PostagemDTO dto = modelMapper.map(entity, PostagemDTO.class);
         dto.setUserId(entity.getUser().getId());
         dto.setUsername(entity.getUser().getUsername());
+        dto.setCurtidas(entity.getCurtidas());
         return dto;
     }
 
@@ -86,6 +87,27 @@ public class PostagemService {
                     postagemRepository.save(entity);
                     return true;
                 }).orElse(false);
+    }
+
+    @Transactional
+    public void curtirPostagem(Long postId, Long userId) throws Exception {
+        Optional<PostagemEntity> postagemOpt = postagemRepository.findById(postId);
+        Optional<UserEntity> usuarioOpt = userRepository.findById(userId);
+
+        if (postagemOpt.isPresent() && usuarioOpt.isPresent()) {
+            PostagemEntity postagem = postagemOpt.get();
+            UserEntity usuario = usuarioOpt.get();
+
+            if (!postagem.getCurtidas().contains(userId)) {
+                postagem.getCurtidas().add(userId);
+                postagemRepository.save(postagem);
+            } else {
+                postagem.getCurtidas().remove(userId);
+                postagemRepository.save(postagem);
+            }
+        } else {
+            throw new Exception("Postagem ou usuário não encontrado");
+        }
     }
 
     @Transactional

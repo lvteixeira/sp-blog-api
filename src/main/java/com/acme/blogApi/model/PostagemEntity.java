@@ -3,6 +3,8 @@ package com.acme.blogApi.model;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="postagens")
@@ -26,6 +28,10 @@ public class PostagemEntity {
     @Column(name = "createdAt", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @ElementCollection
+    @CollectionTable(name = "postagem_curtidas", joinColumns = @JoinColumn(name = "postagem_id"))
+    @Column(name = "user_id")
+    private List<Long> curtidas = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -63,5 +69,13 @@ public class PostagemEntity {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<Long> getCurtidas() {
+        return curtidas;
+    }
+
+    public void setCurtidas(List<Long> curtidas) {
+        this.curtidas = curtidas;
     }
 }
